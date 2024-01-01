@@ -9,10 +9,10 @@ function App() {
   const [privateMessage, setPrivateMessage] = useState<string>("");
   const [userId, setUserId] = useState("");
 
-  const [messages, setMessages] = useState<string[] | null>(null);
+  const [messages, setMessages] = useState<string[]>([]);
   const [privateMessages, setPrivateMessages] = useState<string[] | null>(null);
 
-  const socket: Socket = useMemo(() => io("http://localhost:3000"), []);
+  const socket: Socket = useMemo(() => io("http://localhost:3001"), []);
 
   const handleSend = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -41,12 +41,15 @@ function App() {
       setPrivateMessages((prevMessages) =>
         prevMessages ? [...prevMessages, data] : [data]
       );
+      // setPrivateMessages((prev) => [...prev!, data]);
     });
 
     socket.on("receive", (data) => {
-      setMessages((prevMessages) =>
-        prevMessages ? [...prevMessages, data] : [data]
-      );
+      // setMessages((prevMessages) =>
+      //   prevMessages ? [...prevMessages, data] : [data]
+      // );
+
+      setMessages((prev) => [...prev, data]);
     });
 
     socket.on("welcome", (data) => {
@@ -59,7 +62,7 @@ function App() {
   }, []);
   return (
     <>
-      {/* <div className="w-[1200px] mx-auto bg-black text-white ">
+      {/* <div className="w-[1200px]  mx-auto bg-black text-white ">
         <Navbar />
       </div>
       */}
