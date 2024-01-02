@@ -33,7 +33,7 @@ function App() {
 
   useEffect(() => {
     socket.on("connect", () => {
-      console.log(`The Socket With id : ${socket.id} connected to the server`);
+      console.log(`The Socket With id : ${socket.id} connected to the server!`);
       setSocketId(socket.id as string);
     });
 
