@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Avatar,
   Box,
   Container,
   IconButton,
@@ -15,15 +16,19 @@ import GroupAddRoundedIcon from "@mui/icons-material/GroupAddRounded";
 import WorkRoundedIcon from "@mui/icons-material/WorkRounded";
 import MessageIcon from "@mui/icons-material/Message";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import MenuIcon from "@mui/icons-material/Menu";
+import profilePic from "../../public/profile.jpg";
 
-export const Home = () => {
+const dark = "#555555";
+
+export const Navbar = () => {
   return (
     <>
-      <AppBar>
-        <Toolbar sx={{ bgcolor: "white" }}>
+      <AppBar position="static">
+        <Toolbar position="static" sx={{ bgcolor: "white" }}>
           <Container
             sx={{
-              border: "1px solid black",
+              // border: "1px solid black",
               display: "flex",
               p: 0,
               alignItems: "center",
@@ -77,7 +82,7 @@ export const Home = () => {
                   name: "Home",
                   icon: (
                     <HomeRoundedIcon
-                      sx={{ color: "black", height: 30, width: 30 }}
+                      sx={{ color: dark, height: 30, width: 30 }}
                     />
                   ),
                 },
@@ -86,7 +91,7 @@ export const Home = () => {
                   icon: (
                     <GroupAddRoundedIcon
                       sx={{
-                        color: "black",
+                        color: dark,
                         height: 30,
                         width: 30,
                         // color: "whitesmoke",
@@ -98,23 +103,21 @@ export const Home = () => {
                   name: "Jobs",
                   icon: (
                     <WorkRoundedIcon
-                      sx={{ color: "black", height: 30, width: 30 }}
+                      sx={{ color: dark, height: 30, width: 30 }}
                     />
                   ),
                 },
                 {
                   name: "Messaging",
                   icon: (
-                    <MessageIcon
-                      sx={{ color: "black", height: 30, width: 30 }}
-                    />
+                    <MessageIcon sx={{ color: dark, height: 30, width: 30 }} />
                   ),
                 },
                 {
                   name: "Notifications",
                   icon: (
                     <NotificationsActiveIcon
-                      sx={{ color: "black", height: 30, width: 30 }}
+                      sx={{ color: dark, height: 30, width: 30 }}
                     />
                   ),
                 },
@@ -131,7 +134,7 @@ export const Home = () => {
                     <Typography
                       sx={{
                         textTransform: "capitalize",
-                        color: "black",
+                        color: dark,
                         fontWeight: "light",
                         fontSize: "10px",
                         textAlign: "center",
@@ -147,14 +150,74 @@ export const Home = () => {
             <Box
               sx={{
                 display: "flex",
-                // bgcolor: "black",
                 height: "100%",
                 alignItems: "center",
                 px: 2,
                 gap: 3,
               }}
             >
-              Hell
+              <Box>
+                <Box
+                  // key={index}
+                  sx={{ display: "flex", flexDirection: "column" }}
+                >
+                  <IconButton
+                    sx={
+                      {
+                        // height: "100%"
+                      }
+                    }
+                  >
+                    <Avatar
+                      sx={{
+                        height: 30,
+                        width: 30,
+                      }}
+                      src={profilePic}
+                    />
+                  </IconButton>
+
+                  <Typography
+                    sx={{
+                      textTransform: "capitalize",
+                      color: dark,
+                      fontWeight: "light",
+                      fontSize: "10px",
+                      textAlign: "center",
+                    }}
+                  >
+                    me
+                  </Typography>
+                </Box>
+                {/*  */}
+              </Box>
+
+              <Box
+                // key={index}
+                sx={{ display: "flex", flexDirection: "column" }}
+              >
+                <IconButton
+                  sx={
+                    {
+                      // height: "100%"
+                    }
+                  }
+                >
+                  <MenuIcon sx={{ color: dark, height: 30, width: 30 }} />
+                </IconButton>
+
+                <Typography
+                  sx={{
+                    textTransform: "capitalize",
+                    color: dark,
+                    fontWeight: "light",
+                    fontSize: "10px",
+                    textAlign: "center",
+                  }}
+                >
+                  For Business
+                </Typography>
+              </Box>
             </Box>
           </Container>
         </Toolbar>
